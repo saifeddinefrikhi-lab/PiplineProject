@@ -3,7 +3,7 @@ pipeline {
 
 	environment {
 		IMAGE_NAME = "saiffrikhi/projet_devops"
-		IMAGE_TAG = "latest"
+		IMAGE_TAG  = "latest"
 	}
 
 	triggers {
@@ -35,10 +35,12 @@ pipeline {
 
 		stage('Docker Login & Push') {
 			steps {
-				echo 'Connexion + push vers DockerHub...'
-				withCredentials([usernamePassword(credentialsId: 'bf441a15-9a0e-4cb2-ba9d-937b67370965', usernameVariable: 'saiffrikhi', passwordVariable: 'dckr_pat_YipgFTqbb4_DIHi_xGlcaO4NcjI')]) {
+				echo "Connexion + push vers DockerHub..."
+				withCredentials([usernamePassword(credentialsId: 'bf441a15-9a0e-4cb2-ba9d-937b67370965',
+					usernameVariable: 'DOCKER_USER',
+					passwordVariable: 'DOCKER_PASS')]) {
 					sh """
-                        echo $PASS | docker login -u $USER --password-stdin
+                        echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
                         docker push ${IMAGE_NAME}:${IMAGE_TAG}
                     """
 				}
