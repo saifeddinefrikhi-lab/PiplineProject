@@ -36,7 +36,7 @@ pipeline {
 		stage('Docker Login & Push') {
 			steps {
 				echo 'Connexion + push vers DockerHub...'
-				withCredentials([usernamePassword(credentialsId: 'bf441a15-9a0e-4cb2-ba9d-937b67370965', usernameVariable: 'saiffrikhi', passwordVariable: 'yHG$NSDwn8L_Xq9')]) {
+				withCredentials([usernamePassword(credentialsId: 'bf441a15-9a0e-4cb2-ba9d-937b67370965', usernameVariable: 'saiffrikhi', passwordVariable: 'dckr_pat_YipgFTqbb4_DIHi_xGlcaO4NcjI')]) {
 					sh """
                         echo $PASS | docker login -u $USER --password-stdin
                         docker push ${IMAGE_NAME}:${IMAGE_TAG}
