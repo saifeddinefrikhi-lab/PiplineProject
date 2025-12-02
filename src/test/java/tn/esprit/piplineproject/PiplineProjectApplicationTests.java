@@ -10,5 +10,4 @@ class PiplineProjectApplicationTests {
     void contextLoads() {
     }
 
-
 }
