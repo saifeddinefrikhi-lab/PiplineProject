@@ -10,7 +10,6 @@ pipeline {
 		pollSCM('* * * * *')  // vérification chaque minute
 	}
 
-
 	stages {
 
 		stage('Checkout') {
